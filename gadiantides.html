@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GADI A.C. | Grupo Activo Down Independiente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #5a3fa3;
+            --primary-light: #7a5fc9;
+            --accent: #ff8c00; 
+            --turquesa: #20B2AA;
+            --text: #1a1f2e;
+            --text-light: #64748b;
+            --bg: #ffffff;
+            --soft-bg: #f8fafc;
+            --max-w: 1200px;
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.7; width: 100%; }
+
+        /* --- NAVBAR ULTRA-CLEAN --- */
+        nav {
+            position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
+            width: 95%; max-width: var(--max-w); height: 80px;
+            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px);
+            border-radius: 100px; z-index: 1000; 
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 15px 0 35px; box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; transition: 0.3s; flex-shrink: 0; }
+        .brand:hover { opacity: 0.8; }
+        .brand img { width: 52px; height: 52px; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .brand-text { color: var(--primary); font-weight: 800; font-size: 1.3rem; letter-spacing: -0.5px; }
+
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav a { text-decoration: none; font-size: 0.95rem; color: var(--text); font-weight: 600; transition: 0.3s; position: relative; }
+        nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background: var(--accent); transition: 0.3s; }
+        nav a:hover { color: var(--primary); }
+        nav a:hover::after { width: 100%; }
+
+        .nav-contact-btn { 
+            background: var(--accent); color: white !important; 
+            padding: 12px 28px; border-radius: 50px; font-weight: 700; 
+            text-decoration: none; display: flex; align-items: center; gap: 10px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(255, 140, 0, 0.2);
+            white-space: nowrap;
+        }
+        .nav-contact-btn:hover { transform: scale(1.05); box-shadow: 0 15px 25px rgba(255, 140, 0, 0.3); }
+
+        /* --- HERO --- */
+        header {
+            min-height: 95vh; display: flex; align-items: center; padding: 0 5%;
+            position: relative; color: #fff; overflow: hidden;
+            background: linear-gradient(135deg, rgba(90, 63, 163, 0.85), rgba(32, 178, 170, 0.6)), 
+                        url('https://i.imgur.com/BIszGIw.jpg') center/cover no-repeat;
+        }
+        .hero { position: relative; z-index: 2; max-width: var(--max-w); margin: 60px auto 0; width: 100%; }
+        .hero h1 { font-size: clamp(2.8rem, 7vw, 4.8rem); font-weight: 800; line-height: 1.05; letter-spacing: -2px; text-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .hero p { font-size: 1.4rem; margin-top: 25px; max-width: 650px; opacity: 0.95; font-weight: 400; }
+
+        /* --- FRASE --- */
+        .quote-section { background: var(--soft-bg); padding: 120px 20px; text-align: center; position: relative; width: 100%; }
+        .quote-text { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); color: var(--primary); font-style: italic; margin-bottom: 20px; position: relative; z-index: 1; }
+        .quote-author { font-weight: 700; text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; color: var(--text-light); }
+
+        /* --- SECCIONES --- */
+        section { max-width: var(--max-w); margin: 0 auto; padding: 100px 24px; width: 100%; }
+        h2 { font-size: 3rem; margin-bottom: 50px; color: var(--primary); font-weight: 800; letter-spacing: -1px; text-align: center; }
+        .split { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 80px; align-items: center; }
+        
+        .img-wrapper { position: relative; max-width: 100%; }
+        .img-wrapper::before { content: ''; position: absolute; inset: 20px; border: 2px solid var(--accent); border-radius: 40px; transform: rotate(4deg); z-index: -1; }
+        .img-premium { width: 100%; max-width: 100%; border-radius: 40px; box-shadow: var(--shadow); transform: rotate(-2deg); transition: 0.5s ease; }
+        .img-premium:hover { transform: rotate(0deg) scale(1.02); }
+
+        /* --- FLIP CARDS --- */
+        .flip-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; width: 100%; }
+        .flip-card { height: 450px; perspective: 1500px; width: 100%; }
+        .flip-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
+        .flip-card:hover .flip-inner { transform: rotateY(180deg); }
+        .flip-front, .flip-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 50px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px; box-shadow: var(--shadow); }
+        
+        .flip-front.mision { background: linear-gradient(135deg, var(--accent), #ffab40); color: white; }
+        .flip-front.vision { background: linear-gradient(135deg, var(--turquesa), #40e0d0); color: white; }
+        .flip-back { background: var(--primary); color: white; transform: rotateY(180deg); }
+        .flip-front h3 { font-size: 3.5rem; font-weight: 800; }
+        .flip-back p { font-size: 1.1rem; line-height: 1.6; text-align: center; }
+
+        /* --- CARDS GRID --- */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 35px; width: 100%; }
+        .card-ui { background: #fff; padding: 60px 35px; border-radius: 50px; border: 1px solid rgba(0,0,0,0.03); position: relative; overflow: hidden; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 30px rgba(0,0,0,0.02); width: 100%; }
+        .card-ui:hover { transform: translateY(-15px); box-shadow: 0 30px 60px rgba(0,0,0,0.08); border-color: transparent; }
+        .icon-box { font-size: 3.5rem; margin-bottom: 25px; display: inline-block; transition: 0.3s; }
+        .card-ui:hover .icon-box { transform: scale(1.2) rotate(5deg); }
+        .card-ui h3 { font-size: 1.8rem; margin-bottom: 20px; color: var(--primary); }
+        .card-stripe { position: absolute; bottom: 0; left: 0; width: 100%; height: 10px; opacity: 0.8; }
+
+        /* --- EXPERIENCIA --- */
+        .exp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 25px; margin-top: 40px; }
+        .exp-box { padding: 40px 20px; border-radius: 45px; color: white; text-align: center; transition: 0.3s; }
+        .exp-box:hover { transform: scale(1.03); }
+        .exp-box.teal { background: var(--turquesa); }
+        .exp-box.purple { background: var(--primary); }
+        .exp-number { font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; display: block; line-height: 1; margin-bottom: 10px; }
+        .exp-label { font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- CTA --- */
+        .cta-box { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; text-align: center; padding: 100px 30px; border-radius: 80px; margin: 80px 20px; box-shadow: 0 40px 80px rgba(90, 63, 163, 0.25); }
+        .cta-box h2 { color: white; margin-bottom: 25px; }
+        .cta-box p { font-size: 1.3rem; max-width: 800px; margin: 0 auto 45px; opacity: 0.9; }
+
+        footer { background: #0f172a; color: #94a3b8; padding: 100px 24px; text-align: center; width: 100%; }
+        .footer-logo { color: white; font-weight: 800; font-size: 2rem; margin-bottom: 20px; display: block; }
+
+        @media(max-width:992px){ 
+            nav { padding: 0 15px 0 20px; }
+            nav ul { display: none; } 
+            .brand-text { font-size: 1.1rem; }
+            .split { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            h2 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.8rem; }
+            .cta-box { padding: 80px 25px; border-radius: 50px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#" class="brand">
+        <img src="https://i.imgur.com/BYg9F7N.jpg" alt="GADI Logo">
+        <div class="brand-text">GADI A.C.</div>
+    </a>
+    <ul>
+        <li><a href="#quienes">Nosotros</a></li>
+        <li><a href="#proposito">Misión</a></li>
+        <li><a href="#programas">Programas</a></li>
+        <li><a href="#valores">Valores</a></li>
+    </ul>
+    <a href="https://wa.me/527771452565" target="_blank" class="nav-contact-btn">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+</nav>
+
+<header>
+    <div class="hero">
+        <h1>Impulsamos una vida<br>independiente y digna</h1>
+        <p>GADI A.C. es una comunidad de profesionistas y familias dedicada al desarrollo integral de niñas, niños y jóvenes con Síndrome de Down.</p>
+    </div>
+</header>
+
+<div class="quote-section">
+    <div class="quote-container">
+        <p class="quote-text">"No cabe duda: de niño, a mí me seguía el sol…"</p>
+        <p class="quote-author">Alfonso Reyes</p>
+    </div>
+</div>
+
+<section id="quienes">
+    <div class="split">
+        <div class="text-block">
+            <h2>Quiénes somos</h2>
+            <p style="font-size: 1.2rem; color: var(--text-light);">Somos un grupo de profesionistas con más de diez años de experiencia trabajando con niñas, niños y adolescentes con Síndrome de Down. Contamos con asesores externos y con el apoyo de madres y padres de familia comprometidos con nuestro proyecto.</p>
+        </div>
+        <div class="img-wrapper">
+            <img class="img-premium" src="https://i.imgur.com/wYnVQmc.jpg" alt="Niños GADI">
+        </div>
+    </div>
+</section>
+
+<section id="proposito">
+    <h2>Nuestros Propósitos</h2>
+    <div class="flip-container">
+        <div class="flip-card">
+            <div class="flip-inner">
+                <div class="flip-front mision"><h3>Misión</h3></div>
+                <div class="flip-back">
+                    <p>Nuestra misión es ofrecer todas las alternativas a nuestro alcance para apoyar e impulsar el desarrollo integral de niñas, niños y jóvenes con Síndrome de Down. Trabajamos en equipo con familias, amigos y profesionistas para construir oportunidades reales de vida independiente y productiva.</p>
+                </div>
+            </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-inner">
+                <div class="flip-front vision"><h3>Visión</h3></div>
+                <div class="flip-back">
+                    <p>Ser una organización líder en inclusión y desarrollo integral de personas con Síndrome de Down, reconocida por la excelencia de sus programas educativos y de autonomía, donde cada participante alcance su máximo potencial y sea valorado como miembro activo de la sociedad.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="programas">
+    <h2>Programas</h2>
+    <div class="cards-grid">
+        <div class="card-ui">
+            <div class="icon-box">🎓</div>
+            <h3>Escuela – Taller</h3>
+            <p><strong>Estimulación temprana:</strong> atención desde los primeros meses de vida para fortalecer habilidades motoras, cognitivas y sensoriales.</p>
+            <p style="margin-top:15px"><strong>Educación personalizada:</strong> acompañamiento educativo adaptado a las capacidades y ritmo de cada niño y joven.</p>
+            <div class="card-stripe" style="background: var(--primary);"></div>
+        </div>
+        <div class="card-ui">
+            <div class="icon-box">🧩</div>
+            <h3>Vida Independiente</h3>
+            <p>Desarrollo de habilidades sociales, laborales y de autonomía personal que permitan una integración activa y digna en la sociedad.</p>
+            <div class="card-stripe" style="background: var(--turquesa);"></div>
+        </div>
+        <div class="card-ui">
+            <div class="icon-box">🏠</div>
+            <h3>Vivienda Asistida</h3>
+            <p>Espacios seguros y adecuados donde los participantes practican una vida independiente con acompañamiento profesional y humano.</p>
+            <div class="card-stripe" style="background: var(--accent);"></div>
+        </div>
+    </div>
+</section>
+
+<section id="valores">
+    <h2>Nuestros Valores</h2>
+    <div class="cards-grid">
+        <div class="card-ui">
+            <div class="icon-box">🤝</div>
+            <h3>Compromiso</h3>
+            <p>Dedicación absoluta al bienestar y desarrollo de cada niño y joven. Actuamos con responsabilidad, ética y entrega total.</p>
+            <div class="card-stripe" style="background: var(--primary);"></div>
+        </div>
+        <div class="card-ui">
+            <div class="icon-box">⏳</div>
+            <h3>Constancia</h3>
+            <p>Trabajo continuo y perseverante para alcanzar objetivos significativos. Creemos que la constancia es clave para lograr cambios duraderos.</p>
+            <div class="card-stripe" style="background: var(--turquesa);"></div>
+        </div>
+        <div class="card-ui">
+            <div class="icon-box">❤️</div>
+            <h3>Cariño</h3>
+            <p>Amor, respeto y empatía en cada interacción. Creamos un ambiente cálido y seguro donde cada persona se siente aceptada.</p>
+            <div class="card-stripe" style="background: var(--accent);"></div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="split">
+        <div class="text-block">
+            <h2 style="text-align: left;">Más de 10 años de experiencia</h2>
+            <p style="color: var(--text-light); font-size: 1.2rem;">Durante más de una década hemos trabajado para ofrecer programas de calidad que promuevan el desarrollo integral de niñas, niños y jóvenes con Síndrome de Down.</p>
+            <div class="exp-grid">
+                <div class="exp-box teal">
+                    <span class="exp-number">10+</span>
+                    <span class="exp-label">Años de labor</span>
+                </div>
+                <div class="exp-box purple">
+                    <span class="exp-number">100+</span>
+                    <span class="exp-label">Familias</span>
+                </div>
+            </div>
+        </div>
+        <div class="img-wrapper">
+            <img class="img-premium" src="https://i.imgur.com/gzSzwVt.jpg" style="transform: rotate(2deg);" alt="Experiencia GADI">
+        </div>
+    </div>
+</section>
+
+<div class="cta-box" id="ayuda">
+    <h2>¿Cómo puedes sumar tu apoyo?</h2>
+    <p>En GADI creemos en la colaboración como motor de cambio. Existen diversas formas de participar y fortalecer nuestros programas.</p>
+    <a href="https://wa.me/527771452565" target="_blank" class="nav-contact-btn" style="padding: 22px 60px; font-size: 1.3rem; margin: 0 auto; display: inline-flex;">
+        <i class="fab fa-whatsapp"></i> Enviar WhatsApp
+    </a>
+</div>
+
+<footer>
+    <span class="footer-logo">GADI A.C.</span>
+    <p style="margin-bottom: 5px;">Calle Hortencia No. 6, Col. Rancho Cortés, Cuernavaca, Morelos</p>
+    <p style="margin-bottom: 25px;">Tel. 777 145 25 65</p>
+    <p style="font-size: 0.85rem; opacity: 0.5;">© 2025 GADI A.C. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>
