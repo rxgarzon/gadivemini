@@ -31,7 +31,6 @@
             z-index: 1;
         }
 
-        /* Estética de la Tarjeta Principal */
         .glass-card {
             max-width: 900px;
             width: 90%;
@@ -46,9 +45,8 @@
             box-shadow: 0 50px 100px rgba(0,0,0,0.9);
         }
 
-        /* Imagen/Logo central */
         .logo-container {
-            width: 200px;
+            width: 180px;
             margin: 0 auto 30px;
             filter: drop-shadow(0 0 20px var(--gold-glow));
             animation: float 5s infinite ease-in-out;
@@ -67,63 +65,54 @@
             font-size: 0.9rem;
             color: var(--gold);
             margin-bottom: 20px;
-            font-weight: 200;
         }
 
         h1 {
             font-family: 'Cinzel', serif;
             font-size: clamp(2.5rem, 8vw, 4.5rem);
-            line-height: 1;
             margin-bottom: 30px;
             background: linear-gradient(to bottom, #ffffff 30%, #a5a5a5 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .intrigue-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.6);
-            max-width: 600px;
-            margin: 0 auto 40px;
-            font-weight: 300;
-        }
-
-        /* Formulario Minimalista */
         form {
-            max-width: 400px;
+            max-width: 450px;
             margin: 0 auto;
             display: grid;
-            gap: 20px;
+            gap: 15px;
         }
 
-        .input-box {
-            position: relative;
+        .phone-container {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 10px;
         }
 
         input, select {
             width: 100%;
-            padding: 18px;
+            padding: 16px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            border-radius: 12px;
             color: #fff;
             font-size: 1rem;
             outline: none;
             transition: 0.4s;
         }
 
+        option { background: #111; color: #fff; }
+
         input:focus, select:focus {
             border-color: var(--gold);
-            background: rgba(255, 255, 255, 0.07);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         button {
             background: var(--gold);
             color: #000;
             padding: 20px;
-            border-radius: 15px;
+            border-radius: 12px;
             border: none;
             font-weight: 900;
             text-transform: uppercase;
@@ -136,22 +125,11 @@
         button:hover {
             transform: scale(1.02);
             box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
-            background: #f1c40f;
         }
 
-        .footer-info {
-            margin-top: 50px;
-            font-size: 0.8rem;
-            color: rgba(212, 175, 55, 0.5);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Spinner de carga */
         .loader {
             display: none;
-            width: 20px;
-            height: 20px;
+            width: 18px; height: 18px;
             border: 2px solid #000;
             border-top: 2px solid transparent;
             border-radius: 50%;
@@ -168,46 +146,46 @@
 
     <div class="glass-card">
         <div class="logo-container">
-            <img src="power.jpg" alt="Logo Proximamente">
+            <img src="power.jpg" alt="Logo MLM">
         </div>
 
-        <p class="pre-title">Un movimiento global</p>
-        <h1>EL FUTURO TIENE NOMBRE.</h1>
+        <p class="pre-title">Lanzamiento Mundial</p>
+        <h1>EL FUTURO ES AHORA</h1>
         
-        <p class="intrigue-text">
-            No es un negocio más. No es un producto más. Es el sistema que redefinirá la riqueza en la era digital. 
-            <strong>Enero 2026.</strong> Solo los que vean antes, estarán arriba.
-        </p>
-
         <form id="mlmForm">
             <input type="hidden" id="scriptURL" value="https://script.google.com/macros/s/AKfycbxKC1fRiS1rnq2KEsCk2-yrrWT_znT-LumDQ4iD_ROdOKwS00uCwAK5lgD_qkRe8LaYCg/exec">
 
-            <input type="text" name="nombre" placeholder="Nombre y Apellido" required>
-            <input type="email" name="email" placeholder="Email Privado" required>
+            <input type="text" name="nombre" placeholder="Nombre completo" required>
+            <input type="email" name="email" placeholder="Correo electrónico" required>
             
-            <select name="pais" required>
-                <option value="" disabled selected>Selecciona tu Región</option>
-                <option value="Latinoamérica">Latinoamérica</option>
-                <option value="Norteamérica">Norteamérica</option>
-                <option value="Europa">Europa</option>
-                <option value="Asia/Oceanía">Asia / Oceanía</option>
-            </select>
-            
-            <input type="tel" name="whatsapp" placeholder="WhatsApp Directo" required>
+            <div class="phone-container">
+                <select name="pais" required>
+                    <option value="" disabled selected>Prefijo</option>
+                    <option value="+52">🇲🇽 +52</option>
+                    <option value="+57">🇨🇴 +57</option>
+                    <option value="+34">🇪🇸 +34</option>
+                    <option value="+54">🇦🇷 +54</option>
+                    <option value="+51">🇵🇪 +51</option>
+                    <option value="+56">🇨🇱 +56</option>
+                    <option value="+1">🇺🇸 +1</option>
+                    <option value="+58">🇻🇪 +58</option>
+                    <option value="+593">🇪🇨 +593</option>
+                    <option value="+502">🇬🇹 +502</option>
+                </select>
+                
+                <input type="tel" name="whatsapp" placeholder="WhatsApp (10 dígitos)" 
+                       pattern="[0-9]{10}" maxlength="10" 
+                       oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+            </div>
 
             <button type="submit" id="submitBtn">
-                OBTENER PRE-POSICIÓN <div class="loader" id="loader"></div>
+                ASEGURAR MI POSICIÓN <div class="loader" id="loader"></div>
             </button>
         </form>
-
-        <div class="footer-info">
-            Inscripción estrictamente limitada por región
-        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Partículas Doradas/Blancas
         particlesJS("particles", {
             particles: {
                 number: { value: 40 },
@@ -215,12 +193,11 @@
                 shape: { type: "circle" },
                 opacity: { value: 0.3 },
                 size: { value: 2 },
-                line_linked: { enable: true, distance: 200, color: "#d4af37", opacity: 0.1, width: 1 },
-                move: { enable: true, speed: 1, direction: "none", random: true }
+                line_linked: { enable: true, distance: 150, color: "#d4af37", opacity: 0.2 },
+                move: { enable: true, speed: 1.5 }
             }
         });
 
-        // Lógica de Envío
         const form = document.getElementById('mlmForm');
         const btn = document.getElementById('submitBtn');
         const loader = document.getElementById('loader');
@@ -233,12 +210,10 @@
 
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
                 .then(response => {
-                    // REDIRECCIÓN A TU PÁGINA DE GRACIAS CON EL VIDEO
                     window.location.href = "gracias.html";
                 })
                 .catch(error => {
-                    console.error('Error!', error.message);
-                    alert("Error de conexión. Intenta de nuevo.");
+                    alert("Error en el servidor. Intente más tarde.");
                     btn.disabled = false;
                     loader.style.display = 'none';
                 });
