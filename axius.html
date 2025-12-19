@@ -47,13 +47,13 @@
             margin: 20px;
         }
 
-        /* EFECTO DE IMAGEN MEJORADO */
+        /* CONFIGURACIÓN DE IMAGEN LOCAL */
         .product-image {
             width: 300px;
             height: auto;
             margin: 0 auto 40px;
             display: block;
-            /* El drop-shadow crea el efecto de neón alrededor del sachet */
+            /* Resplandor neón intenso */
             filter: drop-shadow(0 0 25px rgba(255, 0, 50, 0.7)) drop-shadow(0 0 50px rgba(255, 0, 50, 0.3));
             animation: floatAndGlow 4s infinite ease-in-out;
         }
@@ -102,12 +102,11 @@
             margin-bottom: 35px;
             color: rgba(255, 255, 255, 0.75);
             max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto 35px;
         }
 
         .highlight {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: #ff0033;
             margin-bottom: 35px;
@@ -169,7 +168,7 @@
 
         .fade-in {
             opacity: 0;
-            animation: fadeIn 2.5s ease forwards;
+            animation: fadeIn 2s ease forwards;
         }
 
         @keyframes fadeIn {
@@ -182,7 +181,7 @@
     <canvas id="particles"></canvas>
 
     <div class="container fade-in">
-        <img src="https://i.imgur.com/qang87b.png" alt="El Punch - Suplemento Energético" class="product-image">
+        <img src="power.jpg" alt="El Punch - Suplemento Energético" class="product-image">
 
         <h1>El Punch</h1>
         <p class="subtitle">El golpe de energía que estabas esperando</p>
@@ -209,7 +208,7 @@
                 <option value="+1">USA / Canadá (+1)</option>
             </select>
             
-            <input type="tel" name="whatsapp" placeholder="WhatsApp (sin código de país)" required>
+            <input type="tel" name="whatsapp" placeholder="WhatsApp (sin código)" required>
             <button type="submit">Quiero acceso exclusivo</button>
         </form>
 
@@ -222,37 +221,24 @@
     <script>
         particlesJS("particles", {
             particles: {
-                number: { value: 100 },
+                number: { value: 90 },
                 color: { value: ["#ff0033", "#ffffff"] },
                 shape: { type: "circle" },
-                opacity: { value: 0.4, random: true },
-                size: { value: 2, random: true },
+                opacity: { value: 0.4 },
+                size: { value: 2 },
                 line_linked: {
                     enable: true,
                     distance: 120,
                     color: "#ff0033",
-                    opacity: 0.15,
-                    width: 1
+                    opacity: 0.1
                 },
-                move: { 
-                    enable: true, 
-                    speed: 2.5, 
-                    direction: "top", 
-                    random: true, 
-                    out_mode: "out" 
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: { onhover: { enable: true, mode: "bubble" } },
-                modes: { bubble: { size: 6, opacity: 0.8 } }
-            },
-            retina_detect: true
+                move: { enable: true, speed: 2.5, direction: "top" }
+            }
         });
 
         document.getElementById('registerForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('¡Registro exitoso! Prepárate para el golpe de energía. Te contactaremos pronto.');
+            alert('¡Registro exitoso! Prepárate para el golpe de energía en 2026.');
             this.reset();
         });
     </script>
