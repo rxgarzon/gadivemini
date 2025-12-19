@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Punch - 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 900px;
+            text-align: center;
+            padding: 60px 40px;
+            position: relative;
+            z-index: 2;
+            background: rgba(25, 5, 10, 0.7);
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 50, 80, 0.15);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9);
+        }
+
+        .product-image {
+            width: 320px;
+            height: auto;
+            margin: 0 auto 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 60px rgba(255, 0, 50, 0.6);
+            animation: pulse 4s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 40px rgba(255, 0, 50, 0.5); }
+            100% { box-shadow: 0 0 80px rgba(255, 0, 50, 0.8); }
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 6rem;
+            font-weight: 900;
+            margin-bottom: 24px;
+            background: linear-gradient(90deg, #ff3366, #ff6666, #ff99aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 6px;
+            text-shadow: 0 0 30px rgba(255, 50, 80, 0.4);
+        }
+
+        .subtitle {
+            font-size: 1.7rem;
+            font-weight: 300;
+            margin: 30px 0 40px;
+            line-height: 1.8;
+            opacity: 0.85;
+            letter-spacing: 1px;
+        }
+
+        .highlight {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ff3366;
+            letter-spacing: 2px;
+            margin: 40px 0;
+            text-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
+        }
+
+        .description {
+            font-size: 1.3rem;
+            font-weight: 400;
+            max-width: 720px;
+            margin: 0 auto 50px;
+            line-height: 1.9;
+            opacity: 0.9;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        input, select {
+            padding: 18px 20px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.07);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 400;
+            transition: all 0.4s ease;
+            outline: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        input::placeholder, select option[disabled] {
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 300;
+        }
+
+        input:focus, select:focus {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #ff3366;
+            box-shadow: 0 0 25px rgba(255, 51, 102, 0.4);
+        }
+
+        button {
+            padding: 20px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(45deg, #ff3366, #ff6666);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            box-shadow: 0 10px 30px rgba(255, 51, 102, 0.4);
+        }
+
+        button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(255, 51, 102, 0.6);
+            background: linear-gradient(45deg, #ff6666, #ff3366);
+        }
+
+        .footer {
+            margin-top: 70px;
+            font-size: 0.95rem;
+            font-weight: 300;
+            opacity: 0.7;
+            letter-spacing: 0.5px;
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 2s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="particles"></canvas>
+
+    <div class="container fade-in">
+        <!-- Tu imagen del sachet rojo intenso con "pounch" -->
+        <img src="https://imgur.com/qang87b" altEl Punch - Energía Intensa" class="product-image">
+
+        <h1>El Punch</h1>
+        
+        <p class="subtitle">El golpe de energía que estabas esperando</p>
+        
+        <p class="description">
+            Un suplemento revolucionario: un punch de energía instantánea 
+            que activa tu cuerpo y mente en minutos. Fórmula avanzada para rendimiento máximo, 
+            foco mental y vitalidad sostenida durante todo el día.
+        </p>
+        
+        <div class="highlight">Lanzamiento: 2026</div>
+        
+        <p class="description">
+            Sé de los primeros en probarlo. Regístrate ahora y recibe acceso exclusivo a información previa, 
+            muestras limitadas y prioridad en la reserva del kit de lanzamiento.
+        </p>
+
+        <form id="registerForm">
+            <input type="text" name="nombre" placeholder="Nombre completo" required>
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+            
+            <select name="pais" id="pais" required>
+                <option value="" disabled selected>Selecciona tu país</option>
+                <option value="+54">Argentina (+54)</option>
+                <option value="+591">Bolivia (+591)</option>
+                <option value="+55">Brasil (+55)</option>
+                <option value="+56">Chile (+56)</option>
+                <option value="+57">Colombia (+57)</option>
+                <option value="+506">Costa Rica (+506)</option>
+                <option value="+593">Ecuador (+593)</option>
+                <option value="+503">El Salvador (+503)</option>
+                <option value="+502">Guatemala (+502)</option>
+                <option value="+504">Honduras (+504)</option>
+                <option value="+52">México (+52)</option>
+                <option value="+505">Nicaragua (+505)</option>
+                <option value="+507">Panamá (+507)</option>
+                <option value="+595">Paraguay (+595)</option>
+                <option value="+51">Perú (+51)</option>
+                <option value="+1">Estados Unidos / Canadá (+1)</option>
+                <option value="+34">España (+34)</option>
+                <option value="+58">Venezuela (+58)</option>
+                <option value="+598">Uruguay (+598)</option>
+            </select>
+            
+            <input type="tel" name="whatsapp" placeholder="Número de WhatsApp (sin código de país)" required>
+
+            <button type="submit">Quiero ser el primero en probarlo</button>
+        </form>
+
+        <div class="footer">
+            <p>Tu información es 100% confidencial y solo se usará para enviarte actualizaciones exclusivas sobre El Punch.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Partículas rojas intensas para combinar con la imagen
+        particlesJS("particles", {
+            particles: {
+                number: { value: 70 },
+                color: { value: ["#ff3366", "#ff6666", "#ff99aa"] },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#ff3366",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: false,
+                    straight: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // Simulación de envío del formulario
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const pais = document.getElementById('pais').options[document.getElementById('pais').selectedIndex].text;
+            alert('¡Gracias! Te contactaremos pronto vía WhatsApp (' + pais + ') con información exclusiva sobre El Punch para su lanzamiento en 2026.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
