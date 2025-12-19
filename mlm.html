@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto 2026 | El Siguiente Nivel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-glow: rgba(212, 175, 55, 0.4);
+            --bg: #050505;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+        }
+
+        /* Estética de la Tarjeta Principal */
+        .glass-card {
+            max-width: 900px;
+            width: 90%;
+            padding: 60px 40px;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(135deg, rgba(20,20,20,0.9) 0%, rgba(10,10,10,0.95) 100%);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 40px;
+            text-align: center;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.9);
+        }
+
+        /* Imagen/Logo central */
+        .logo-container {
+            width: 200px;
+            margin: 0 auto 30px;
+            filter: drop-shadow(0 0 20px var(--gold-glow));
+            animation: float 5s infinite ease-in-out;
+        }
+
+        .logo-container img { width: 100%; height: auto; border-radius: 50%; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .pre-title {
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            font-size: 0.9rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 200;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            line-height: 1;
+            margin-bottom: 30px;
+            background: linear-gradient(to bottom, #ffffff 30%, #a5a5a5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intrigue-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+        }
+
+        /* Formulario Minimalista */
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            display: grid;
+            gap: 20px;
+        }
+
+        .input-box {
+            position: relative;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.4s;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.07);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+        }
+
+        button {
+            background: var(--gold);
+            color: #000;
+            padding: 20px;
+            border-radius: 15px;
+            border: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: 0.4s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+            background: #f1c40f;
+        }
+
+        .footer-info {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: rgba(212, 175, 55, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Spinner de carga */
+        .loader {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #000;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+    </style>
+</head>
+<body>
+
+    <canvas id="particles"></canvas>
+
+    <div class="glass-card">
+        <div class="logo-container">
+            <img src="power.jpg" alt="Logo Proximamente">
+        </div>
+
+        <p class="pre-title">Un movimiento global</p>
+        <h1>EL FUTURO TIENE NOMBRE.</h1>
+        
+        <p class="intrigue-text">
+            No es un negocio más. No es un producto más. Es el sistema que redefinirá la riqueza en la era digital. 
+            <strong>Enero 2026.</strong> Solo los que vean antes, estarán arriba.
+        </p>
+
+        <form id="mlmForm">
+            <input type="hidden" id="scriptURL" value="https://script.google.com/macros/s/AKfycbxKC1fRiS1rnq2KEsCk2-yrrWT_znT-LumDQ4iD_ROdOKwS00uCwAK5lgD_qkRe8LaYCg/exec">
+
+            <input type="text" name="nombre" placeholder="Nombre y Apellido" required>
+            <input type="email" name="email" placeholder="Email Privado" required>
+            
+            <select name="pais" required>
+                <option value="" disabled selected>Selecciona tu Región</option>
+                <option value="Latinoamérica">Latinoamérica</option>
+                <option value="Norteamérica">Norteamérica</option>
+                <option value="Europa">Europa</option>
+                <option value="Asia/Oceanía">Asia / Oceanía</option>
+            </select>
+            
+            <input type="tel" name="whatsapp" placeholder="WhatsApp Directo" required>
+
+            <button type="submit" id="submitBtn">
+                OBTENER PRE-POSICIÓN <div class="loader" id="loader"></div>
+            </button>
+        </form>
+
+        <div class="footer-info">
+            Inscripción estrictamente limitada por región
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Partículas Doradas/Blancas
+        particlesJS("particles", {
+            particles: {
+                number: { value: 40 },
+                color: { value: "#d4af37" },
+                shape: { type: "circle" },
+                opacity: { value: 0.3 },
+                size: { value: 2 },
+                line_linked: { enable: true, distance: 200, color: "#d4af37", opacity: 0.1, width: 1 },
+                move: { enable: true, speed: 1, direction: "none", random: true }
+            }
+        });
+
+        // Lógica de Envío
+        const form = document.getElementById('mlmForm');
+        const btn = document.getElementById('submitBtn');
+        const loader = document.getElementById('loader');
+        const scriptURL = document.getElementById('scriptURL').value;
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            btn.disabled = true;
+            loader.style.display = 'inline-block';
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    // REDIRECCIÓN A TU PÁGINA DE GRACIAS CON EL VIDEO
+                    window.location.href = "gracias.html";
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert("Error de conexión. Intenta de nuevo.");
+                    btn.disabled = false;
+                    loader.style.display = 'none';
+                });
+        });
+    </script>
+</body>
+</html>
