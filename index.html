@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Punch | Energía Extrema 2026</title>
+    <title>El Punch | Energía Extrema</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-red: #ff0022;
-            --dark-red: #66000e;
-            --bg-black: #0a0a0a;
-            --glass: rgba(20, 20, 20, 0.8);
+            --primary-glow: rgba(255, 0, 34, 0.6);
+            --bg-dark: #050001;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* Reset crítico para evitar desbordamientos */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -23,7 +27,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow-x: hidden;
+            padding: 20px; /* Espacio para que no toque los bordes del cel */
         }
 
         #particles {
@@ -33,94 +37,103 @@
         }
 
         .main-card {
-            max-width: 600px;
-            width: 90%;
+            width: 100%;
+            max-width: 500px; /* Tamaño ideal para que no se desborde */
             text-align: center;
-            padding: 40px;
+            padding: 40px 25px;
             position: relative;
             z-index: 2;
-            background: var(--glass);
+            background: rgba(15, 0, 2, 0.9);
             backdrop-filter: blur(20px);
             border-radius: 30px;
-            border: 1px solid rgba(255, 0, 34, 0.2);
-            box-shadow: 0 0 80px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 0, 34, 0.3);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
         }
 
         .product-img {
-            width: 200px;
+            width: 180px;
+            height: auto;
             margin-bottom: 20px;
             filter: drop-shadow(0 0 30px var(--primary-red));
-            animation: float 4s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
         }
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
-            letter-spacing: 5px;
-            background: linear-gradient(to bottom, #fff 40%, var(--primary-red) 100%);
+            font-size: clamp(2rem, 10vw, 3.5rem);
+            letter-spacing: 4px;
+            background: linear-gradient(to bottom, #ffffff 40%, var(--primary-red) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
         .tagline {
             color: var(--primary-red);
             font-weight: 700;
-            letter-spacing: 4px;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
             margin-bottom: 25px;
         }
 
         .status-pill {
-            background: linear-gradient(45deg, var(--dark-red), var(--primary-red));
-            padding: 8px 25px;
+            background: linear-gradient(45deg, #800011, var(--primary-red));
+            padding: 8px 20px;
             border-radius: 50px;
             display: inline-block;
             font-weight: 800;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-            box-shadow: 0 0 20px rgba(255, 0, 34, 0.4);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 20px var(--primary-glow);
         }
 
         .desc {
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-            margin-bottom: 35px;
+            line-height: 1.5;
+            margin-bottom: 30px;
         }
 
         form {
-            display: grid;
+            display: flex;
+            flex-direction: column;
             gap: 15px;
+            width: 100%;
         }
 
+        /* Contenedor de teléfono ajustado para NO desbordar */
         .phone-row {
-            display: grid;
-            grid-template-columns: 110px 1fr;
+            display: flex;
             gap: 10px;
+            width: 100%;
+        }
+
+        .phone-row select {
+            width: 100px; /* Ancho fijo para el prefijo */
+            flex-shrink: 0;
+        }
+
+        .phone-row input {
+            flex-grow: 1; /* El campo de número toma el resto del espacio */
+            min-width: 0; /* Evita que el input empuje hacia afuera */
         }
 
         input, select {
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 0, 34, 0.3);
+            border: 1px solid rgba(255, 0, 34, 0.4);
             padding: 15px;
             border-radius: 12px;
             color: #fff;
-            outline: none;
+            font-size: 1rem;
+            width: 100%; /* Por defecto ocupan todo el ancho */
             transition: 0.3s;
         }
 
         input:focus, select:focus {
             border-color: var(--primary-red);
             background: rgba(255, 0, 34, 0.1);
-            box-shadow: 0 0 15px rgba(255, 0, 34, 0.3);
+            outline: none;
         }
 
         .submit-btn {
@@ -132,16 +145,15 @@
             font-weight: 900;
             letter-spacing: 2px;
             cursor: pointer;
-            transition: 0.4s;
             text-transform: uppercase;
+            width: 100%;
             margin-top: 10px;
-            box-shadow: 0 10px 25px rgba(255, 0, 34, 0.4);
+            box-shadow: 0 10px 20px rgba(255, 0, 34, 0.4);
         }
 
         .submit-btn:hover {
-            transform: scale(1.02);
             filter: brightness(1.2);
-            box-shadow: 0 15px 35px rgba(255, 0, 34, 0.6);
+            transform: translateY(-2px);
         }
 
         .loader {
@@ -171,7 +183,7 @@
         <div class="status-pill">Disponibilidad Inminente | 2026</div>
 
         <p class="desc">
-            Descubre el pináculo de la suplementación. Una fórmula magistral diseñada para quienes exigen <b>vitalidad absoluta</b> y un rendimiento sin precedentes.
+            Descubre el pináculo de la suplementación. Una fórmula diseñada para quienes exigen <b>vitalidad absoluta</b>.
         </p>
 
         <form id="punchForm">
@@ -203,11 +215,10 @@
     <script>
         particlesJS("particles", {
             particles: {
-                number: { value: 60 },
+                number: { value: 50 },
                 color: { value: "#ff0022" },
-                opacity: { value: 0.4 },
                 size: { value: 2 },
-                line_linked: { enable: true, distance: 150, color: "#ff0022", opacity: 0.2 },
+                line_linked: { enable: true, distance: 150, color: "#ff0022", opacity: 0.15 },
                 move: { enable: true, speed: 1.5, direction: "top" }
             }
         });
@@ -227,7 +238,7 @@
             })
             .then(() => window.location.href = "gracias.html")
             .catch(() => {
-                alert("Error al conectar. Intenta de nuevo.");
+                alert("Error al enviar. Intenta de nuevo.");
                 btn.disabled = false;
                 loader.style.display = 'none';
             });
